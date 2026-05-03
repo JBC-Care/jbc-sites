@@ -148,6 +148,57 @@ html,body{
   border:1px solid rgba(255,255,255,0.35);
   color:#fff;padding:4px 14px;border-radius:20px;
 }
+.swipe-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin-top:32px;
+  padding:16px 40px;
+  background:rgba(255,255,255,0.18);
+  border:2px solid rgba(255,255,255,0.75);
+  border-radius:50px;
+  color:#fff;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:0.1em;
+  cursor:pointer;
+  font-family:var(--sans);
+  animation:swipe-pulse 1.8s ease-in-out infinite;
+  text-shadow:0 1px 4px rgba(0,0,0,0.3);
+  box-shadow:0 4px 20px rgba(0,0,0,0.25);
+  transition:background 0.2s,box-shadow 0.2s;
+}
+.swipe-cta:hover{
+  background:rgba(255,255,255,0.32);
+  box-shadow:0 6px 28px rgba(0,0,0,0.35);
+}
+.swipe-cta-light{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin-top:36px;
+  padding:14px 36px;
+  background:rgba(0,0,0,0.05);
+  border:2px solid rgba(0,0,0,0.18);
+  border-radius:50px;
+  color:#555;
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:0.1em;
+  cursor:pointer;
+  font-family:var(--sans);
+  animation:swipe-pulse 1.8s ease-in-out infinite;
+  transition:background 0.2s,box-shadow 0.2s;
+  box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+.swipe-cta-light:hover{
+  background:rgba(0,0,0,0.10);
+  box-shadow:0 4px 16px rgba(0,0,0,0.13);
+}
+@keyframes swipe-pulse{
+  0%,100%{transform:translateX(0);opacity:0.85}
+  50%{transform:translateX(10px);opacity:1}
+}
 
 /* ══════════════════
    SLIDE 2: ABOUT
@@ -188,13 +239,13 @@ html,body{
 }
 .sites-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .site-card{
-  background:#fff;border:1px solid var(--border);
+  background:#fdfffe;border:2px solid var(--green-mid);
   border-radius:var(--radius);padding:18px 20px;
   transition:box-shadow 0.2s,border-color 0.2s;
 }
-.site-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.08);border-color:#bbb}
+.site-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.08);border-color:var(--green)}
 .site-card.featured{border:2px solid var(--green-mid);background:#fdfffe}
-.site-card.featured .site-name{color:var(--green)}
+.site-card.featured .site-name{color:var(--text)}
 .site-type-badge{
   display:inline-block;font-size:10px;
   padding:2px 10px;border-radius:20px;
@@ -205,11 +256,14 @@ html,body{
 .site-tel{font-size:13px;color:var(--green);font-weight:500}
 .site-note{font-size:10px;color:var(--text-muted);margin-top:5px;line-height:1.5}
 .site-link{
-  display:inline-flex;align-items:center;gap:3px;
-  font-size:11px;color:var(--green);margin-top:8px;
-  border-bottom:1px solid transparent;transition:border-color 0.2s;
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:14px;font-weight:700;color:var(--green);
+  margin-top:12px;padding:8px 18px;
+  border:1px solid var(--green);border-radius:20px;
+  transition:background 0.2s,color 0.2s;
+  text-decoration:none;
 }
-.site-link:hover{border-color:var(--green)}
+.site-link:hover{background:var(--green);color:#fff}
 
 /* ══════════════════
    SLIDE 4: CAREPLAN
@@ -295,6 +349,26 @@ html,body{
 .contact-tel{font-family:var(--serif);font-size:30px;font-weight:600;letter-spacing:0.04em}
 .contact-tel-sub{font-size:12px;opacity:0.7;margin-top:4px}
 .contact-note{font-size:12px;opacity:0.75;margin-bottom:28px}
+.corp-info-box{
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.28);
+  border-radius:var(--radius);
+  padding:16px 32px;
+  margin-bottom:32px;
+  text-align:center;
+}
+.corp-info-label{
+  font-size:10px;letter-spacing:0.2em;
+  opacity:0.65;margin-bottom:8px;
+  text-transform:uppercase;
+}
+.corp-info-name{
+  font-family:var(--serif);font-size:18px;
+  font-weight:600;margin-bottom:6px;
+}
+.corp-info-detail{
+  font-size:12px;opacity:0.75;line-height:1.9;
+}
 .cta-btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .cta-btn{
   font-size:14px;padding:12px 28px;border-radius:8px;
@@ -333,7 +407,7 @@ html,body{
 
   <!-- SLIDE 1: HERO -->
   <div class="slide" id="slide-hero">
-    <img class="hero-img" src="JBCヒーロ.png" alt="ぱすてるデイサービスの様子">
+    <img class="hero-img" src="hero.png" alt="ぱすてるデイサービスの様子">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-text">
@@ -346,11 +420,10 @@ html,body{
           <span class="hero-badge">定員10名の小規模ケア</span>
           <span class="hero-badge">宿泊サービスあり（一部）</span>
         </div>
+        <button class="swipe-cta" onclick="document.getElementById('slider').scrollTo({left:window.innerWidth,behavior:'smooth'})">
+          → スワイプしてサービスを見る
+        </button>
       </div>
-    </div>
-    <div class="arrow-hint">
-      スワイプ
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </div>
   </div>
 
@@ -408,9 +481,9 @@ html,body{
           </div>
         </div>
       </div>
-    </div>
-    <div class="arrow-hint dark">次へ
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <button class="swipe-cta-light" onclick="document.getElementById('slider').scrollTo({left:window.innerWidth*2,behavior:'smooth'})">
+        → 事業所一覧を見る
+      </button>
     </div>
   </div>
 
@@ -427,6 +500,7 @@ html,body{
           <div class="site-addr">〒275-0015 千葉県習志野市秋津5-12-8</div>
           <div class="site-contact"><span class="site-tel">047-453-3155</span><span class="site-fax">047-411-5622</span></div>
           <div class="site-note">宿泊サービスあり</div>
+          <a href="https://jbc-care.github.io/akitsu/" class="site-link" target="_blank">拠点サイトへ →</a>
         </div>
         <div class="site-card">
           <span class="site-type-badge">地域密着型通所介護</span>
@@ -434,30 +508,35 @@ html,body{
           <div class="site-addr">〒272-0823 千葉県市川市東菅野4-14-4</div>
           <div class="site-contact"><span class="site-tel">047-337-8776</span><span class="site-fax">047-337-8776</span></div>
           <div class="site-note">宿泊サービスあり</div>
+          <a href="https://jbc-care.github.io/higashisugano/" class="site-link" target="_blank">拠点サイトへ →</a>
         </div>
         <div class="site-card">
           <span class="site-type-badge">地域密着型通所介護</span>
           <div class="site-name">ぱすてるデイサービス 大久保</div>
           <div class="site-addr">〒275-0011 千葉県習志野市大久保4-1-16</div>
           <div class="site-contact"><span class="site-tel">047-406-4974</span><span class="site-fax">047-406-4984</span></div>
+          <a href="https://jbc-care.github.io/okubo/" class="site-link" target="_blank">拠点サイトへ →</a>
         </div>
         <div class="site-card">
           <span class="site-type-badge">地域密着型通所介護</span>
           <div class="site-name">ぱすてるデイサービス 滝不動</div>
           <div class="site-addr">〒274-0067 千葉県船橋市大穴南1-30-18</div>
           <div class="site-contact"><span class="site-tel">047-401-3192</span><span class="site-fax">047-401-3196</span></div>
+          <a href="https://jbc-care.github.io/takifudo/" class="site-link" target="_blank">拠点サイトへ →</a>
         </div>
         <div class="site-card">
           <span class="site-type-badge">地域密着型通所介護</span>
           <div class="site-name">ぱすてるデイサービス こてはし台</div>
           <div class="site-addr">〒262-0005 千葉県千葉市花見川区こてはし台1-18-8</div>
           <div class="site-contact"><span class="site-tel">043-301-4288</span><span class="site-fax">043-301-4290</span></div>
+          <a href="https://jbc-care.github.io/kotehashidai/" class="site-link" target="_blank">拠点サイトへ →</a>
         </div>
         <div class="site-card">
           <span class="site-type-badge">地域密着型通所介護</span>
           <div class="site-name">ぱすてるデイサービス 四葉</div>
           <div class="site-addr">〒175-0084 東京都板橋区四葉2-15-1 1階</div>
           <div class="site-contact"><span class="site-tel">03-6904-2145</span><span class="site-fax">03-6904-2146</span></div>
+          <a href="https://jbc-care.github.io/yotsuba/" class="site-link" target="_blank">拠点サイトへ →</a>
         </div>
         <div class="site-card featured">
           <span class="site-type-badge">地域密着型通所介護 ＋ 居宅介護支援</span>
@@ -468,9 +547,9 @@ html,body{
           <a href="https://jbc-care.github.io/nagominoshiro/" class="site-link" target="_blank">拠点サイトへ →</a>
         </div>
       </div>
-    </div>
-    <div class="arrow-hint dark">次へ
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <button class="swipe-cta-light" onclick="document.getElementById('slider').scrollTo({left:window.innerWidth*3,behavior:'smooth'})">
+        → グループサービスを見る
+      </button>
     </div>
   </div>
 
@@ -492,9 +571,9 @@ html,body{
           </div>
         </div>
       </div>
-    </div>
-    <div class="arrow-hint dark">次へ
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <button class="swipe-cta-light" onclick="document.getElementById('slider').scrollTo({left:window.innerWidth*4,behavior:'smooth'})">
+        → ご利用の流れを見る
+      </button>
     </div>
   </div>
 
@@ -526,25 +605,24 @@ html,body{
           <div class="flow-desc">モニタリング・報告書提出など、連携を大切にしながら継続してサポートします。</div>
         </div>
       </div>
-    </div>
-    <div class="arrow-hint dark">次へ
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <button class="swipe-cta-light"      <button class="swipe-cta-light" onclick="document.getElementById('slider').scrollTo({left:window.innerWidth*5,behavior:'smooth'})">
+        → お問い合わせへ
+      </button>
     </div>
   </div>
 
   <!-- SLIDE 6: CONTACT -->
   <div class="slide" id="slide-contact">
     <div class="contact-inner">
-      <div class="contact-title">まずはお気軽にご相談ください</div>
-      <p class="contact-sub">ご利用者様・ご家族様のご相談から、<br>ケアマネジャー様のご紹介まで、<br>各事業所スタッフが丁寧にお応えします。</p>
-      <div class="contact-box">
-        <div class="contact-box-label">法人本部（株式会社 J・B・C）</div>
-        <div class="contact-tel">042-516-8520</div>
-        <div class="contact-tel-sub">東京都東大和市立野4丁目483番地</div>
+      <div class="corp-info-box">
+        <div class="corp-info-label">運営法人</div>
+        <div class="corp-info-name">株式会社 J・B・C</div>
+        <div class="corp-info-detail">代表取締役　宮田 修</div>
+        <div class="corp-info-detail">〒207-0021　東京都東大和市立野4丁目483番地</div>
       </div>
-      <p class="contact-note">各事業所への直接のお問い合わせも歓迎しています</p>
+      <div class="contact-title">まずはお気軽に<br>各事業所にご相談ください</div>
+      <p class="contact-sub">ご利用者様・ご家族様のご相談から、<br>ケアマネジャー様のご紹介まで、<br>各事業所スタッフが丁寧にお応えします。</p>
       <div class="cta-btn-row">
-        <a href="https://jbc-care.github.io/nagominoshiro/" target="_blank" class="cta-btn btn-white">和みの城 サイトへ</a>
         <a href="#" onclick="goToSlide(2);return false;" class="cta-btn btn-outline-w">事業所一覧を見る</a>
       </div>
     </div>
@@ -570,33 +648,34 @@ html,body{
 const slider = document.getElementById('slider');
 const dotsEl = document.getElementById('dots');
 const slides = document.querySelectorAll('.slide');
-const darkSlides = new Set([1,2,3,4]);
 
-slides.forEach((_,i)=>{
-  const d = document.createElement('div');
-  d.className = 'dot' + (darkSlides.has(i) ? ' dark' : '');
-  d.addEventListener('click', ()=> goToSlide(i));
-  dotsEl.appendChild(d);
-});
-
-function goToSlide(i){
-  slider.scrollTo({left: i * window.innerWidth, behavior:'smooth'});
-}
-
-function updateDots(){
-  const idx = Math.round(slider.scrollLeft / window.innerWidth);
-  document.querySelectorAll('.dot').forEach((d,i)=>{
-    d.classList.toggle('active', i===idx);
+function buildDots(){
+  slides.forEach((_,i)=>{
+    const d=document.createElement('button');
+    d.className='dot'+(i===0?' active':'');
+    d.addEventListener('click',()=>goToSlide(i));
+    dotsEl.appendChild(d);
   });
 }
 
-slider.addEventListener('scroll', updateDots, {passive:true});
-updateDots();
+function goToSlide(i){
+  slider.scrollTo({left:i*window.innerWidth,behavior:'smooth'});
+}
 
-window.addEventListener('resize', ()=>{
-  const idx = Math.round(slider.scrollLeft / window.innerWidth);
-  slider.scrollLeft = idx * window.innerWidth;
-});
+function updateDots(){
+  const idx=Math.round(slider.scrollLeft/window.innerWidth);
+  document.querySelectorAll('.dot').forEach((d,i)=>{
+    d.classList.toggle('active',i===idx);
+    const slide=slides[i];
+    const isDark=slide.id==='slide-about'||slide.id==='slide-sites'||
+                 slide.id==='slide-careplan'||slide.id==='slide-flow';
+    d.classList.toggle('dark',isDark);
+  });
+}
+
+buildDots();
+slider.addEventListener('scroll',updateDots,{passive:true});
+updateDots();
 </script>
 </body>
 </html>
